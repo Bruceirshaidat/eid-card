@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بطاقة عيد الأضحى</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0d0a05;
+    overflow: hidden;
+    font-family: 'Noto Naskh Arabic', serif;
+  }
+
+  /* Stars background */
+  .stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
+  }
+  @keyframes twinkle {
+    from { opacity: 0.1; transform: scale(0.8); }
+    to   { opacity: 0.9; transform: scale(1.2); }
+  }
+
+  /* Card */
+  .card {
+    position: relative;
+    width: min(560px, 95vw);
+    background: linear-gradient(160deg, #1a0e00 0%, #0d1a0a 50%, #0a0d1a 100%);
+    border-radius: 2px;
+    padding: 48px 40px 40px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(212,175,55,0.25),
+      0 0 60px rgba(180,130,20,0.15),
+      0 40px 100px rgba(0,0,0,0.8);
+    animation: cardIn 1.2s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* Gold border decoration */
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 1px;
+    pointer-events: none;
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(212,175,55,0.12);
+    border-radius: 1px;
+    pointer-events: none;
+  }
+
+  /* Corner ornaments */
+  .corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+  }
+  .corner svg { width: 100%; height: 100%; }
+  .corner-tl { top: 16px; right: 16px; }
+  .corner-tr { top: 16px; left: 16px; transform: scaleX(-1); }
+  .corner-bl { bottom: 16px; right: 16px; transform: scaleY(-1); }
+  .corner-br { bottom: 16px; left: 16px; transform: scale(-1,-1); }
+
+  /* Crescent & stars top */
+  .moon-area {
+    text-align: center;
+    margin-bottom: 28px;
+    animation: fadeUp 1s 0.3s both;
+  }
+  .moon-svg {
+    width: 90px;
+    height: 90px;
+    filter: drop-shadow(0 0 18px rgba(212,175,55,0.6));
+  }
+
+  /* Title */
+  .eid-title {
+    font-family: 'Amiri', serif;
+    font-size: clamp(2rem, 8vw, 2.8rem);
+    font-weight: 700;
+    text-align: center;
+    color: #d4af37;
+    text-shadow: 0 0 30px rgba(212,175,55,0.5), 0 0 60px rgba(212,175,55,0.2);
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    animation: fadeUp 1s 0.5s both;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    animation: fadeUp 1s 0.65s both;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to left, transparent, rgba(212,175,55,0.5), transparent);
+  }
+  .divider-gem {
+    width: 8px;
+    height: 8px;
+    background: #d4af37;
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px rgba(212,175,55,0.8);
+  }
+
+  /* Greeting text */
+  .greeting {
+    text-align: center;
+    color: rgba(255,240,200,0.85);
+    font-size: 1.05rem;
+    line-height: 2;
+    animation: fadeUp 1s 0.8s both;
+  }
+  .greeting .name {
+    display: block;
+    font-family: 'Amiri', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #e8c84a;
+    text-shadow: 0 0 20px rgba(212,175,55,0.4);
+    margin: 6px 0 10px;
+  }
+
+  /* Arabic verse */
+  .verse {
+    margin-top: 22px;
+    padding: 16px 20px;
+    border-right: 2px solid rgba(212,175,55,0.4);
+    text-align: right;
+    color: rgba(255,240,200,0.6);
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.9;
+    animation: fadeUp 1s 1s both;
+  }
+
+  /* Bottom pattern row */
+  .bottom-decor {
+    margin-top: 28px;
+    text-align: center;
+    color: rgba(212,175,55,0.4);
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+    animation: fadeUp 1s 1.1s both;
+  }
+
+  /* Floating particles */
+  .particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #d4af37;
+    border-radius: 50%;
+    animation: float var(--d,6s) ease-in-out infinite;
+    opacity: 0;
+  }
+  @keyframes float {
+    0%,100% { opacity:0; transform: translateY(0) scale(1); }
+    20%,80%  { opacity:0.6; }
+    50%      { opacity:1; transform: translateY(-40px) scale(1.4); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(16px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  /* Glow radial */
+  .glow {
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .glow-gold {
+    top: -80px; left: 50%; transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(180,130,10,0.12) 0%, transparent 70%);
+  }
+  .glow-green {
+    bottom: -80px; left: 50%; transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(20,80,30,0.15) 0%, transparent 70%);
+  }
+</style>
+</head>
+<body>
+
+<!-- Stars -->
+<div class="stars" id="stars"></div>
+
+<!-- Card -->
+<div class="card">
+  <div class="glow glow-gold"></div>
+  <div class="glow glow-green"></div>
+
+  <!-- Corner ornaments -->
+  <div class="corner corner-tl">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M38 2 L2 2 L2 38" stroke="rgba(212,175,55,0.5)" stroke-width="1.5" fill="none"/>
+      <path d="M28 2 Q20 2 20 10 Q20 18 28 18 Q36 18 36 10 Q36 2 28 2Z" fill="rgba(212,175,55,0.08)" stroke="rgba(212,175,55,0.4)" stroke-width="0.8"/>
+      <circle cx="38" cy="2" r="2" fill="rgba(212,175,55,0.6)"/>
+      <circle cx="2" cy="38" r="2" fill="rgba(212,175,55,0.6)"/>
+      <circle cx="2" cy="2" r="2" fill="rgba(212,175,55,0.6)"/>
+    </svg>
+  </div>
+  <div class="corner corner-tr">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M38 2 L2 2 L2 38" stroke="rgba(212,175,55,0.5)" stroke-width="1.5" fill="none"/>
+      <path d="M28 2 Q20 2 20 10 Q20 18 28 18 Q36 18 36 10 Q36 2 28 2Z" fill="rgba(212,175,55,0.08)" stroke="rgba(212,175,55,0.4)" stroke-width="0.8"/>
+      <circle cx="38" cy="2" r="2" fill="rgba(212,175,55,0.6)"/>
+      <circle cx="2" cy="38" r="2" fill="rgba(212,175,55,0.6)"/>
+      <circle cx="2" cy="2" r="2" fill="rgba(212,175,55,0.6)"/>
+    </svg>
+  </div>
+  <div class="corner corner-bl">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M38 2 L2 2 L2 38" stroke="rgba(212,175,55,0.5)" stroke-width="1.5" fill="none"/>
+      <path d="M28 2 Q20 2 20 10 Q20 18 28 18 Q36 18 36 10 Q36 2 28 2Z" fill="rgba(212,175,55,0.08)" stroke="rgba(212,175,55,0.4)" stroke-width="0.8"/>
+      <circle cx="38" cy="2" r="2" fill="rgba(212,175,55,0.6)"/>
+      <circle cx="2" cy="38" r="2" fill="rgba(212,175,55,0.6)"/>
+      <circle cx="2" cy="2" r="2" fill="rgba(212,175,55,0.6)"/>
+    </svg>
+  </div>
+  <div class="corner corner-br">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M38 2 L2 2 L2 38" stroke="rgba(212,175,55,0.5)" stroke-width="1.5" fill="none"/>
+      <path d="M28 2 Q20 2 20 10 Q20 18 28 18 Q36 18 36 10 Q36 2 28 2Z" fill="rgba(212,175,55,0.08)" stroke="rgba(212,175,55,0.4)" stroke-width="0.8"/>
+      <circle cx="38" cy="2" r="2" fill="rgba(212,175,55,0.6)"/>
+      <circle cx="2" cy="38" r="2" fill="rgba(212,175,55,0.6)"/>
+      <circle cx="2" cy="2" r="2" fill="rgba(212,175,55,0.6)"/>
+    </svg>
+  </div>
+
+  <!-- Floating gold particles -->
+  <div id="particles"></div>
+
+  <!-- Moon -->
+  <div class="moon-area">
+    <svg class="moon-svg" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Crescent -->
+      <path d="M55 15 Q30 25 30 45 Q30 65 55 75 Q35 72 25 55 Q15 38 25 23 Q33 10 55 15Z"
+            fill="url(#moonGrad)" />
+      <!-- Stars around -->
+      <polygon points="68,12 69.5,16 73.5,16 70.5,18.5 71.5,22.5 68,20 64.5,22.5 65.5,18.5 62.5,16 66.5,16"
+               fill="#d4af37" opacity="0.9"/>
+      <polygon points="20,30 21,33 24,33 21.5,35 22.5,38 20,36.5 17.5,38 18.5,35 16,33 19,33"
+               fill="#d4af37" opacity="0.7"/>
+      <polygon points="72,52 72.8,54.5 75.5,54.5 73.4,56.1 74.2,58.6 72,57.1 69.8,58.6 70.6,56.1 68.5,54.5 71.2,54.5"
+               fill="#d4af37" opacity="0.8"/>
+      <defs>
+        <linearGradient id="moonGrad" x1="25" y1="15" x2="55" y2="75" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#f0d060"/>
+          <stop offset="100%" stop-color="#c8960a"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- Title -->
+  <div class="eid-title">عيد الأضحى المبارك</div>
+
+  <!-- Divider -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-gem"></div>
+    <div class="divider-gem" style="width:5px;height:5px;opacity:0.5"></div>
+    <div class="divider-gem"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- Greeting -->
+  <div class="greeting">
+    تتقدم بأحر التهاني والتبريكات إلى
+    <span class="name">أحمد ماجد</span>
+    بمناسبة حلول عيد الأضحى المبارك
+    <br>
+    أعاده الله عليك وعلى أهلك بالخير واليُمن والبركات
+    <br>
+    وتقبّل الله منّا ومنكم صالح الأعمال
+  </div>
+
+  <!-- Verse -->
+  <div class="verse">
+    ﴿ وَلِكُلِّ أُمَّةٍ جَعَلْنَا مَنسَكًا لِّيَذْكُرُوا اسْمَ اللَّهِ ﴾
+    <br>
+    — سورة الحج، الآية ٣٤
+  </div>
+
+  <!-- Bottom decor -->
+  <div class="bottom-decor">✦ &nbsp; ✦ &nbsp; ✦</div>
+</div>
+
+<script>
+  // Generate stars
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 120; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2 + 0.5;
+    s.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      top: ${Math.random()*100}%;
+      left: ${Math.random()*100}%;
+      --d: ${2 + Math.random()*4}s;
+      animation-delay: ${Math.random()*4}s;
+    `;
+    starsEl.appendChild(s);
+  }
+
+  // Generate floating particles inside card
+  const particlesEl = document.getElementById('particles');
+  for (let i = 0; i < 12; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `
+      top: ${20 + Math.random()*60}%;
+      left: ${10 + Math.random()*80}%;
+      --d: ${4 + Math.random()*5}s;
+      animation-delay: ${Math.random()*6}s;
+    `;
+    particlesEl.appendChild(p);
+  }
+</script>
+</body>
+</html>
